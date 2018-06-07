@@ -1,8 +1,11 @@
 # `eos-ramcost` contracts
 
-Two contracts, `eosio.token.ramcost` and `eosio.system.ramcost` for adjusting during boot. It is tested on master branch of eos-mainnet repo only. **`wasm` included.**
+Two contracts, `eosio.token.ramcost` and `eosio.system.ramcost` for adjusting during boot. It is tested on master branch of eos-mainnet repo only. And **`wasm` included.**
 
 # Codes
+
+Original `eosio.token` and `eosio.system` is from master branch of eos-mainnet repo.
+* commit id : `464b687e684290beee6a37c3521f3181216700e8`
 
 ## `eosio.token.ramcost` contract
 
@@ -41,6 +44,8 @@ add_subdirectory(eosio.system.ramcost)
 
 Sorry for not being neat.
 
+Or you can use `wasm` files included.
+
 # Usage
 
 * You can use `eos-ramcost` contracts from the beginning or when necessary.
@@ -49,7 +54,7 @@ cleos set contract eosio.token /path/to/eosio.token.ramcost
 cleos set contract eosio /path/to/eosio.system.ramcost
 ```
 
-It's time to adjust for the common good. Calculate the amount to adjust before.
+It's time to adjust for the common good. **Calculate the amount to adjust before.**
 
 * Check the initial state of 1) token supply, 2) balance of system accounts, and 3) bancor state.
 ```
@@ -81,7 +86,7 @@ cleos get currency balance eosio.token eosio EOS
 # .... and many other system accounts
 ```
 
-* Adjust balance of EOS in bancor state.
+* Adjust balance of EOS in bancor state. Say subtracting 249.0751 EOS for example.
 ```
 cleos push action eosio biosramcost '["eosio", "249.0751 EOS"]' -p eosio
 ```
